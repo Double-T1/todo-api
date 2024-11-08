@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "todo-app-backend-api"
+version = "0.1.0"
+description = ""
+authors = ["chen weichen <newsforcwc@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.4"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
