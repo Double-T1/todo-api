@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from pydantic import BaseModel
 
 router = APIRouter(
     prefix="/users",
@@ -6,13 +7,26 @@ router = APIRouter(
     responses={404: {'description': 'Not Found'}}
 )
 
-@router.post("/")
-async def sign_in():
-    pass
+class UserInModel(BaseModel):
+    username: str
+    password: str
+
+class UserInDB(BaseModel):
+    username: str
+    hashed_password: str
 
 @router.post("/sign_up")
-async def sign_up():
+async def sign_up(info: UserInModel):
+    
     return 
+
+@router.post("/")
+async def sign_in(info: UserInModel):
+    return 
+
+
+class UserOut(BaseModel):
+    username: str
 
 @router.post("/{user_id}")
 def sign_out(user_id):

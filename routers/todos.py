@@ -1,4 +1,6 @@
 from fastapi import APIRouter
+from pydantic import BaseModel
+from datetime import datetime
 
 router = APIRouter(
     prefix="/todos",
@@ -7,12 +9,17 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_todo():
+async def read_todos():
     return 
 
 @router.post("/")
 async def add_todo():
     return 
+
+class Todo(BaseModel):
+    todo: str
+    is_completed: bool = False
+
 
 @router.put("/{todo_id}")
 async def update_todo(todo_id):
